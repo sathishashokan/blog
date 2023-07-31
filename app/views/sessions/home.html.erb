@@ -1,0 +1,96 @@
+<html>
+<head>
+    <style type="text/css">
+        html {
+            margin: 0px;
+            font-family: "Open Sans",Helvetica,Arial,sans-serif;
+        }
+        body {
+            background-color: #EEEDED;
+        }
+        .head {
+            font: small-caps 10px Verdana;
+            display: flex;
+            justify-content: space-between;
+            background: #2470F3;
+            color: black;
+            padding: 20px 40px;
+            margin: 0px;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        a:hover {
+            color: #F33724;
+        }
+        .article-detail {
+            font-size: 11px;
+            color: #9a9a9a;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            padding: 10px 0;
+            position: relative;
+            transition: opacity .15s ease-in;
+        }
+        .author-name {
+            color: #cf2e2e;
+        }
+        img {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            margin-right: 30px;
+            margin-bottom: 20px;
+        }
+        .main-container {
+            
+        }
+        .container {
+            margin: 100px 300px;
+            background-color: #FFFFFF;
+            padding: 50px;
+        }
+        .article-container {
+            
+        }
+        .para {
+            color: #535353;
+        }
+        p {
+            margin: 0 0 20px;
+        }
+        .div-header-button {
+            display: flex;
+        }
+        .header-button {
+            margin: 0px 10px;
+        }
+        .button, .header-button {
+            border: 2px solid #F33724;
+            border-radius: 6px;
+            background-color: #F33724;
+            padding: 10px 20px;
+            font-size: 20px;
+            color: white;
+            text-decoration: none;
+        }
+        .button:hover, .header-button:hover {
+            background: white;
+            color: #F33724;
+        }
+    </style>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+</head>
+<body>
+    <div class='head'>
+        <div>
+            <h1>Bitsila Blogs</h1>
+        </div>
+        <div class='div-header-button'>
+            <%= link_to 'Login', sessions_new_path, class: 'header-button' %>
+            <%= link_to 'Signup',  signup_path, class: 'header-button' %>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+</head>
+<body>
+    <h1>Create New Post</h1><hr>
+
+    <%= form_with(model: @post, url: "/posts", local: true, multipart: true) do |post_form| %>
+        <%= post_form.fields_for :post do |form| %>
+            <div id="div1">
+                <div>
+                    <%= form.label :title %><br>
+                    <%= form.text_field :title, required: :true, class: 'large-text-field' %>
+                </div>
+                <div>
+                    <%= form.label :description %><br>
+                    <%= form.text_field :description, required: :true, class: 'large-text-field' %>
+                </div>
+                <div>
+                    <%= form.label :category %><br>
+                    <%= form.collection_check_boxes :category_ids, Category.all, :id, :name, class: 'large-text-field-2', include_hidden: false do |category| %>
+                        <%= category.check_box %>
+                        <%= category.label %><br>
+                    <% end %>
+                </div>
+                <div>
+                    <%= form.label :article %><br>
+                    <%= form.text_area :article, :cols => 30, :rows => 10, required: :true, class: 'large-text-field' %>
+                </div>
+                <div>
+                    <%= form.label :thumnail_image %><br>
+                    <%= form.file_field :thumbnail_image, required: :true, class: 'large-text-field' %>
+                </div>
+                <%= form.submit :submit %>
+            </div>
+        <% end %>
+    <% end %>
+    <div class='bottom'>
+        <%= link_to 'Back', posts_path, class: 'button' %>
+    </div>
+</body>
+</html>
