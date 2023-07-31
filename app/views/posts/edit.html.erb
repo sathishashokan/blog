@@ -1,0 +1,106 @@
+<html>
+<head>
+    <style type="text/css">
+        html {
+            font-family: system-ui;
+        }
+        h1 {
+            font-family: system-ui;
+            display: flex;
+            color: white;
+            margin: 0px;
+            padding: 10px 50px;
+            background: black;
+            border-radius: 6px;
+            font-size: 20px;
+        }
+        label {
+            font-family: system-ui;
+            font-weight: bold;
+        }
+        .div_1 {
+            margin: 20px;
+            padding: 20px;
+        }
+        div {
+            display: block;
+            justify-content: center;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+        }
+        .large-text-field {
+            display: flex;
+            flex-wrap: wrap;
+            font-family: sans-serif;
+            font-size: 20px;
+            border: 2px solid #C8C7C7;
+            border-radius: 5px;
+            margin: 10px 0px;
+            padding: 5px;
+            width: 100%;
+            max-width: 400px; 
+        }
+        .back-button, .button {
+            border: 2px solid #09AAEA;
+            border-radius: 5px;
+            background-color: #09AAEA;
+            margin: 20px 0px;
+            padding: 10px 20px;
+            font-size: 20px;
+            color: white;
+            text-decoration: none;
+        }
+        .button:hover {
+            cursor: pointer;
+            background: white;
+            color: #09AAEA;
+        }
+        .back-button {
+            margin: 40px 0px;
+        }
+        .back-button:hover {
+            background: white;
+            color: #09AAEA;
+        }
+    </style>
+</head>
+<body>
+<h1>Edit : <%= @post.title %></h1>
+<%= form_with model: @post, url: post_path(@post), method: :put do |form| %>
+  <div class="div_1">
+    <div>
+        <%= form.label :title %>
+        <%= form.text_field :title, required: :true, class: 'large-text-field' %>
+    </div>
+
+    <div>
+        <%= form.label :description %>
+        <%= form.text_area :description, :rows => 5, required: :true, class: 'large-text-field' %>
+    </div>
+
+    <div>
+        <%= form.label :category %><br>
+        <%= form.collection_check_boxes :category_ids, Category.all, :id, :name, class: 'large-text-field-2', include_hidden: false do |category| %>
+            <%= category.check_box %>
+            <%= category.label %><br>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.label :thumbnail_image %>
+        <%= form.file_field :thumbnail_image, required: :true, class: 'large-text-field' %>
+    </div>
+
+    <div>
+        <%= form.label :article %>
+        <%= form.text_area :article, :cols => 70, :rows => 10, required: :true, class: 'large-text-field' %>
+    </div>
+
+    <div>
+        <%= form.submit "Update Post", class: 'button' %>
+    </div>
+  </div>
+<% end %>
+<%= link_to 'Back', posts_path, class: 'back-button' %>
+</body>
+</html>
